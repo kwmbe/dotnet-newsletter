@@ -11,7 +11,7 @@ namespace Nieuwsbrief
         public EmailContext()
         {
             var folder = Environment.SpecialFolder.LocalApplicationData;
-            var path = Environment.GetFolderPath(folder);
+            var path = Environment.GetFolderPath(folder, Environment.SpecialFolderOption.Create);
             DbPath = System.IO.Path.Join(path, "email.db");
         }
 

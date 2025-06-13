@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using Nieuwsbrief;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +12,13 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<EmailContext>();
 
 var app = builder.Build();
+
+// Run migrations at startup
+using (var scope = app.Services.CreateScope())
+{
+    var context = scope.ServiceProvider.GetRequiredService<EmailContext>();
+    context.Database.Migrate();
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
