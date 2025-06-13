@@ -16,6 +16,9 @@ COPY ["Nieuwsbrief/Nieuwsbrief.csproj", "Nieuwsbrief/"]
 RUN dotnet restore "./Nieuwsbrief/Nieuwsbrief.csproj"
 COPY . .
 WORKDIR "/src/Nieuwsbrief"
+RUN dotnet tool install --global dotnet-ef
+ENV PATH="$PATH:/root/.dotnet/tools"
+RUN dotnet ef database update
 RUN dotnet build "./Nieuwsbrief.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 # This stage is used to publish the service project to be copied to the final stage
