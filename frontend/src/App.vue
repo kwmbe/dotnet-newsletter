@@ -7,8 +7,9 @@ const email = ref("test");
 
 const submitEmail = () => fetch("https://localhost:32779/Email?emailString=" + email.value, {
   method: "POST",
-}).then(res => console.log(res))
-
+})
+.then(res => res.text())
+.then(res => res ? alert(res) : alert("Successvol ingescreven"))
 </script>
 
 <template>
