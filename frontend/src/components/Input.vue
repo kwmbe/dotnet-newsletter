@@ -3,7 +3,7 @@ defineProps(["label", "placeholder", "action", "submit"])
 const model = defineModel()
 
 const update = (e) => {
-  model.value = $e.target.value;
+  model.value = e.target.value;
 }
 </script>
 
