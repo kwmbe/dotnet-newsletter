@@ -21,13 +21,13 @@ namespace Nieuwsbrief.Controllers
 
                 if (jsonObject == null || jsonObject.RootElement.GetProperty("deliverability").ToString() == "UNDELIVERABLE")
                 {
-                    return BadRequest();
+                    return BadRequest("Invalid email");
                 }
             }
 
             if (context.Emails.Any(email => email.EmailAddress == emailString))
             {
-                return BadRequest();
+                return BadRequest("Email already subscribed");
             }
 
             var email = new Email { EmailAddress = emailString };

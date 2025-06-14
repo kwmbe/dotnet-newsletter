@@ -7,8 +7,7 @@ const email = ref("test");
 
 const submitEmail = () => fetch("https://localhost:32779/Email?emailString=" + email.value, {
   method: "POST",
-  mode: "no-cors",
-}).then(res => console.log(res));
+}).then(res => console.log(res))
 
 </script>
 
