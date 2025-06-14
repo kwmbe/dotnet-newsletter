@@ -25,6 +25,11 @@ namespace Nieuwsbrief.Controllers
                 }
             }
 
+            if (context.Emails.Any(email => email.EmailAddress == emailString))
+            {
+                return BadRequest();
+            }
+
             var email = new Email { EmailAddress = emailString };
 
             context.Add(email);
