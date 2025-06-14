@@ -11,7 +11,7 @@ namespace Nieuwsbrief.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Post(String emailString)
         {
-            var apiKey = config["AbstractAPIKey"];
+            var apiKey = config["AbstracAPIKey"];
 
             if (apiKey != null) 
             {
@@ -21,13 +21,13 @@ namespace Nieuwsbrief.Controllers
 
                 if (jsonObject == null || jsonObject.RootElement.GetProperty("deliverability").ToString() == "UNDELIVERABLE")
                 {
-                    return BadRequest();
+                    return BadRequest("Invalid email");
                 }
             }
 
             if (context.Emails.Any(email => email.EmailAddress == emailString))
             {
-                return BadRequest();
+                return BadRequest("Email already subscribed");
             }
 
             var email = new Email { EmailAddress = emailString };
