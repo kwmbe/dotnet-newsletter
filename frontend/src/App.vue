@@ -26,9 +26,6 @@ const submitEmail = () => fetch("https://localhost:32779/Email?emailString=" + e
   </main>
 </template>
 
-<style scoped>
-
-@media (min-width: 1024px) {
-  /* responsive */
-}
+<style>
+@import "tailwindcss"
 </style>
