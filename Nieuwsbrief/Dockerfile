@@ -4,8 +4,7 @@
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 USER $APP_UID
 WORKDIR /app
-EXPOSE 8080
-EXPOSE 8081
+EXPOSE 5000
 
 
 # This stage is used to build the service project
@@ -19,8 +18,6 @@ WORKDIR "/src/Nieuwsbrief"
 RUN dotnet tool install --global dotnet-ef
 ENV PATH="$PATH:/root/.dotnet/tools"
 RUN dotnet add package Microsoft.EntityFrameworkCore.Design
-RUN dotnet ef migrations add InitialCreate
-RUN dotnet ef database update
 RUN dotnet build "./Nieuwsbrief.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 # This stage is used to publish the service project to be copied to the final stage

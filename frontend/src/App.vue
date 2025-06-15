@@ -8,7 +8,7 @@ var error = ""
 
 const submitEmail = () => {
   if (!error && email.value) {
-    fetch("https://localhost:32779/Email?emailString=" + email.value.trim(), {
+    fetch("http://localhost:5000/Email?emailString=" + email.value.trim(), {
       method: "POST",
     })
     .then(res => res.text())
