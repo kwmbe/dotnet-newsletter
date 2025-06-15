@@ -29,7 +29,7 @@ watch(email, (newEmail) => {
 </script>
 
 <template>
-  <main>
+  <main class="flex justify-center items-center h-screen">
     <Card header="Schrijf je in op onze wekelijkse nieuwsbrief">
       <Input
         placeholder="someone@starringjane.com"
@@ -38,7 +38,7 @@ watch(email, (newEmail) => {
         :submit="submitEmail"
         v-model="email"
       />
-      <p>{{error}}</p>
+      <p class="text-red-500">{{error}}</p>
     </Card>
   </main>
 </template>
