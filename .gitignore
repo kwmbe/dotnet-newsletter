@@ -55,3 +55,6 @@ nunit-*.xml
 
 # vs folder
 .vs/*
+
+# .env
+.env
